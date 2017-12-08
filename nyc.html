@@ -1,0 +1,150 @@
+
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>New York Times Search</title>
+  <!-- bootstrap -->
+  	<link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- bootswatch link -->
+	<link rel="stylesheet" type="text/css" href="https://bootswatch.com/4/journal/bootstrap.min.css">
+<style>
+	.jumbotron {
+		text-align: center;
+	}
+
+
+</style>
+
+</head>
+
+<body>
+  <body>
+	<div class="container">
+
+				<div class="jumbotron">
+					<h1>New York Times Search</h1>
+				</div> <!-- jumbotron close-->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+    					<h3 class="panel-title">Search Parameters</h3>
+  					</div>
+  					<div class="panel-body">
+ 						<div class="#">
+							<label for="basic-url">Search Term</label>
+							<div class="input-group">
+<!-- 							  <span class="input-group-addon" id="basic-addon3"></span>
+ -->							  <input type="text" class="input1 form-control" id="basic-url" aria-describedby="basic-addon3">
+							</div>
+							<label for="basic-url">Number of Records to Retrieve</label>
+							<div class="input-group">
+<!-- 							  <span class="input-group-addon" id="basic-addon3"></span>
+ -->							  <input type="text" class="input2 form-control" id="basic-url" aria-describedby="basic-addon3">
+							</div>
+							<label for="basic-url">Start Year (Optional)</label>
+							<div class="input-group">
+<!-- 							  <span class="input-group-addon" id="basic-addon3"></span>
+ -->							  <input type="text" class="input3 form-control" id="basic-url" aria-describedby="basic-addon3">
+							</div>
+							<label for="basic-url">End Year (Optional)</label>
+							<div class="input-group">
+<!-- 							  <span class="input-group-addon" id="basic-addon3"></span>
+ -->							  <input type="text" class="input4 form-control" id="basic-url" aria-describedby="basic-addon3">
+							</div>
+							<br>
+							<button type="button" class="btn btn-primary">Search</button>
+							<button type="button" class="btn btn-secondary">Clear Results</button>
+<!-- 							<hr>
+							<div id="result"></div> -->
+ 						</div>
+  					</div> <!-- panel body -->
+				</div> <!-- panel -->
+			</div> <!-- columns -->
+		</div> <!-- row close -->
+  		<div class="row">
+			<div class="col-md-12">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+    					<h3 class="panel-title">Top Articles</h3>
+  					</div>
+  					<div class="panel-body">
+ 						<div class="topArticles">
+							<div class="#"></div>
+							<hr>
+							<div class="#"></div>
+<!-- 							<hr>
+							<div id="result"></div> -->
+ 						</div>
+  					</div> <!-- panel body -->
+				</div> <!-- panel -->
+			</div> <!-- columns -->
+		</div> <!-- row close -->
+  	</div> <!--close container -->
+  <!-- jQuery link -->
+  <script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+
+  <script type="text/javascript">
+
+ var userInput1;
+ var userInput2;
+ var userInput3;
+ var userInput4;
+
+	$( ".btn-primary" ).click(function() {
+	  // alert( "Handler for .click() called." );
+  var userInput1 = $(".input1").val()
+  	console.log(userInput1)
+
+  	var userInput2 = $(".input2").val()
+  	console.log(userInput2)
+
+  	var userInput3 = $(".input3").val()
+  	console.log(userInput3)
+
+  	var userInput4 = $(".input4").val()
+  	console.log(userInput4)
+	});
+
+	$( ".btn-secondary" ).click(function() {
+	  // alert( "Handler for .click() called." );
+	var userInput1 = $(".input1").val(' ')
+  	console.log(userInput1)
+
+  	var userInput2 = $(".input2").val(' ')
+  	console.log(userInput2)
+
+  	var userInput3 = $(".input3").val(' ')
+  	console.log(userInput3)
+
+  	var userInput4 = $(".input4").val(' ')
+  	console.log(userInput4)
+	});
+
+  var searchTerm = $(this).attr('input1');
+  var query = "q=" + searchTerm;
+  var queryUrl = "https://api.nytimes.com/svc/search/v2/articlesearch.json?" +query + "&api_key=b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+
+  $.ajax({
+    url: queryUrl,
+    method: 'GET',
+  })
+  .done(function(result) {
+    console.log(result);
+  var query
+  }).fail(function(err) {
+    throw err;
+  });
+
+
+  </script>
+
+	</body>
+
+</html>
